@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title>Fixture</title>
+<link>https://example.invalid/</link>
+<item>
+<title>Massive Microsoft 365 outage disrupts Outlook, Teams worldwide</title>
+<link>https://example.invalid/m365-outage</link>
+<description>Microsoft is investigating a widespread outage affecting Outlook, Teams and Copilot.</description>
+<pubDate>Sat, 14 Nov 2026 10:00:00 GMT</pubDate>
+<guid>https://example.invalid/m365-outage</guid>
+</item>
+<item>
+<title>TAN-2026-048 Improper access controls in Tanium Threat Response</title>
+<link>https://security.tanium.com/TAN-2026-048</link>
+<description>Tanium addressed an improper access controls vulnerability in Threat Response. CVE-2026-12345</description>
+<pubDate>Sat, 14 Nov 2026 09:00:00 GMT</pubDate>
+<guid>https://security.tanium.com/TAN-2026-048</guid>
+</item>
+<item>
+<title>New smartphone with foldable screen announced</title>
+<link>https://example.invalid/phone</link>
+<description>A vendor announced a new device.</description>
+<pubDate>Sat, 14 Nov 2026 08:00:00 GMT</pubDate>
+<guid>https://example.invalid/phone</guid>
+</item>
+</channel>
+</rss>
