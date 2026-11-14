@@ -1,0 +1,14 @@
+{
+  "state_file": "tests/test.db",
+  "default_since_hours": 100000,
+  "limit": 25,
+  "feeds": [
+    {"name": "Fixture RSS", "type": "rss", "url": "fixture.rss"},
+    {"name": "Fixture KEV", "type": "kev", "url": "fixture.kev.json"}
+  ],
+  "watch": {
+    "Microsoft": ["microsoft", "outlook", "teams", "azure", "windows"],
+    "Tanium": ["tanium"]
+  },
+  "delivery": {"type": "file", "output_dir": "tests/out"}
+}
