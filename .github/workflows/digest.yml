@@ -1,0 +1,17 @@
+name: IT-Sicherheitsdigest
+on:
+  schedule:
+    - cron: "0 6,15 * * *"   # 08:00 und 17:00 Uhr MEZ
+  workflow_dispatch:
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 secwatch.py --config config.json --since-hours 12
+        env:
+          DIGEST_WEBHOOK_URL: ${{ secrets.DIGEST_WEBHOOK_URL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
