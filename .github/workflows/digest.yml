@@ -1,7 +1,7 @@
 name: IT-Sicherheitsdigest
 on:
   schedule:
-    - cron: "0 6,15 * * *"   # 08:00 und 17:00 Uhr MEZ
+    - cron: "0 7,16 * * *"   # ca. 08:00 und 17:00 Uhr MEZ
   workflow_dispatch:
 jobs:
   digest:
@@ -11,7 +11,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python3 secwatch.py --config config.json --since-hours 12
-        env:
-          DIGEST_WEBHOOK_URL: ${{ secrets.DIGEST_WEBHOOK_URL }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      - uses: actions/cache@v4
+        with:
+          path: secwatch.db
+          key: secwatch-db-${{ github.run_id }}
+          restore-keys: secwatch-db-
+      - run: python3 secwatch.py --config config.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digest-latest
+          path: digests/
+          retention-days: 14
