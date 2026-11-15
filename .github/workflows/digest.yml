@@ -1,8 +1,10 @@
 name: IT-Sicherheitsdigest
+
 on:
   schedule:
-    - cron: "0 7,16 * * *"   # ca. 08:00 und 17:00 Uhr MEZ
+    - cron: "0 7,16 * * *"  # ca. 08:00 und 17:00 Uhr MEZ
   workflow_dispatch:
+
 jobs:
   digest:
     runs-on: ubuntu-latest
@@ -17,8 +19,8 @@ jobs:
           key: secwatch-db-${{ github.run_id }}
           restore-keys: secwatch-db-
       - run: python3 secwatch.py --config config.json
-            env:
-        DIGEST_WEBHOOK_URL: ${{ secrets.DIGEST_WEBHOOK_URL }}
+        env:
+          DIGEST_WEBHOOK_URL: ${{ secrets.DIGEST_WEBHOOK_URL }}
       - uses: actions/upload-artifact@v4
         with:
           name: digest-latest
