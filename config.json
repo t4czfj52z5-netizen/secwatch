@@ -20,5 +20,5 @@
     "Tanium": ["tanium"],
     "Allgemeine Security-Vorfälle": ["zero-day", "ransomware", "cyberangriff", "hackerangriff", "data breach", "massive outage", "großstörung", "weltweiter ausfall"]
   },
-  "delivery": {"type": "webhook", "url_env": "DIGEST_WEBHOOK_URL", "format": "json"}
+"delivery": {"type": "webhook", "url_env": "DIGEST_WEBHOOK_URL", "format": "slack"}
 }
