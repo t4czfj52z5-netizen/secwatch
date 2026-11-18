@@ -315,12 +315,14 @@ def deliver(cfg, subject, md, html, items):
         url = os.environ.get(d.get("url_env", "DIGEST_WEBHOOK_URL"), "")
         if not url:
             raise RuntimeError(f"webhook URL missing: set env var {d.get('url_env', 'DIGEST_WEBHOOK_URL')}")
+                max_len = int(d.get("max_text_length", 4000))
+        text = md if len(md) <= max_len else md[: max_len - 80] + "\n… (gekürzt – vollständiger Digest im Artifact)"
         if d.get("format") == "slack":
-            payload = {"text": f"*{subject}*\n{md}"}
+            payload = {"text": f"*{subject}*\n{text}"}
         else:
             payload = {
                 "subject": subject,
-                "text": md,
+                "text": text,
                 "items": [
                     {k: i[k] for k in ("title", "link", "summary", "source", "topics", "score", "published")}
                     for i in items
